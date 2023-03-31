@@ -1,0 +1,45 @@
+-- The procedure update_price will take an amount and a product_id as an input and will update the price of that product wrt that amount.
+
+CREATE PROCEDURE update_price(change int, p_id int) LANGUAGE plpgsql
+AS
+$$
+DECLARE
+p_price int;
+BEGIN
+UPDATE Product
+SET price = price + change
+WHERE product_id = p_id;
+COMMIT;
+END;
+$$;
+
+CALL update_price(<change_amount_with_sign>, <product_id>)
+
+-- update the stock of the product
+
+CREATE OR REPLACE PROCEDURE get_amount(oid int)
+LANGUAGE plpgsql
+AS
+$$
+DECLARE
+cost int;
+BEGIN
+cost = 0;
+SELECT sum(t.counts*p.price) INTO cost FROM 
+(SELECT c.counts, c.product_id 
+FROM contains AS c 
+NATURAL JOIN orders AS o
+WHERE o.order_id = oid) AS t 
+JOIN product AS p
+ON p.product_id = t.product_id;
+IF cost IS NOT null THEN
+  UPDATE orders
+  SET amount = cost WHERE order_id = oid;
+ELSE
+  UPDATE orders
+  SET amount = 0 WHERE order_id = oid;
+END IF;
+END;
+$$;
+
+CALL get_amount(<order_id>)

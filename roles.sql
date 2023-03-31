@@ -1,0 +1,14 @@
+CREATE ROLE Mayank
+LOGIN
+PASSWORD "password";
+
+CREATE ROLE Shailab
+CREATEDB
+LOGIN
+PASSWORD "password";
+
+CREATE ROLE Aditya
+SUPERUSER
+LOGIN
+PASSWORD "password";
+
