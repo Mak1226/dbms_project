@@ -33,7 +33,7 @@ FOREIGN KEY (customer_id) REFERENCES Customer (customer_id)
 CREATE TABLE Payment(
 payment_id int NOT NULL,
 mode char (20) NOT NULL,
-status char(10),
+status char(10) DEFAULT 'Pending',
 customer_id int,
 order_id int,
 PRIMARY KEY(payment_id),
