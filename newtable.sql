@@ -47,12 +47,15 @@ Contact char(20) NOT NULL,
 PRIMARY KEY(seller_id)
 );
 CREATE TABLE contains(
-counts int NOT NULL, 
+counts int NOT NULL,
+cost int,
+seller_id int
 product_id int, 
 order_id int,
 PRIMARY KEY(product_id, order_id), 
 FOREIGN KEY (product_id) REFERENCES Product (product_id), 
 FOREIGN KEY (order_id) REFERENCES Orders (order_id)
+FOREIGN KEY (seller_id) REFERENCES sells (seller_id)
 );
 CREATE TABLE sells ( 
 stock int DEFAULT 0, 
