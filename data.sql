@@ -168,3 +168,33 @@ insert into contains (order_id, counts, product_id) values (309, 2, 214);
 insert into contains (order_id, counts, product_id) values (310, 13, 218);
 insert into contains (order_id, counts, product_id) values (305, 4, 203);
 insert into contains (order_id, counts, product_id) values (301, 1, 215);
+
+
+
+
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (522, 221, 307, 486.65, 5);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (524, 212, 302, 198.38, 7);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (520, 208, 310, 143.2, 11);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (512, 220, 303, 18.61, 3);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (523, 218, 310, 201.46, 14);
+
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (519, 218, 305, 272.38, 11);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (525, 206, 309, 495.85, 19);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (507, 210, 309, 220.6, 6);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (505, 207, 302, 283.27, 15);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (525, 202, 304, 423.56, 9);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (519, 221, 305, 428.38, 5);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (508, 211, 306, 30.36, 6);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (521, 206, 310, 263.5, 4);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (518, 213, 310, 114.54, 13);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (525, 210, 307, 473.89, 20);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (514, 204, 302, 96.06, 20);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (524, 208, 306, 284.41, 15);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (517, 201, 303, 78.89, 2);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (520, 214, 308, 199.19, 14);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (525, 221, 305, 43.18, 2);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (511, 207, 308, 158.04, 17);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (504, 225, 308, 100.08, 7);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (504, 222, 306, 161.04, 1);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (509, 209, 307, 249.43, 3);
+-- insert into contains (seller_id, product_id, order_id, cost, counts) values (525, 201, 301, 43.52, 9);
