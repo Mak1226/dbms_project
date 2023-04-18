@@ -64,7 +64,7 @@ order_id int,
 PRIMARY KEY(product_id, order_id),
 FOREIGN KEY (product_id) REFERENCES Product (product_id),
 FOREIGN KEY (order_id) REFERENCES Orders (order_id),
-FOREIGN KEY (seller_id) REFERENCES sells (seller_id)
+FOREIGN KEY (seller_id, product_id) REFERENCES sells (seller_id, product_id)
 );
 CREATE TABLE Cart(
 customer_id int,
