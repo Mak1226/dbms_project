@@ -142,7 +142,7 @@ insert into sells (seller_id, product_id, price, stock) values (505, 209, 397.76
 insert into sells (seller_id, product_id, price, stock) values (514, 223, 91.52, 14);
 insert into sells (seller_id, product_id, price, stock) values (511, 204, 198.58, 10);
 insert into sells (seller_id, product_id, price, stock) values (523, 218, 148.57, 7);
-insert into sells (seller_id, product_id, price, stock) values (511, 209, 475.72, 9);
+insert into sells (seller_id, product_id, price, stock) values (510, 209, 475.72, 9);
 insert into contains (seller_id, product_id, order_id, cost, counts) values (522, 221, 307, 486.65, 5);
 insert into contains (seller_id, product_id, order_id, cost, counts) values (524, 212, 302, 198.38, 7);
 insert into contains (seller_id, product_id, order_id, cost, counts) values (520, 208, 310, 143.2, 11);
