@@ -1,9 +1,9 @@
 CREATE TABLE Customer(
 customer_id int PRIMARY KEY,
-name char(50) NOT NULL,
-email char(255),
-contact char(50) NOT NULL,
-DOB char(30)
+name char(30) NOT NULL,
+email char(50),
+contact char(15) NOT NULL,
+DOB char(12)
 );
 CREATE TABLE Product(
 product_id int NOT NULL,
@@ -21,10 +21,10 @@ PRIMARY KEY(order_id),
 FOREIGN KEY (customer_id) REFERENCES Customer (customer_id)
 );
 CREATE TABLE Address(
-apartment char(50) NOT NULL,
-street char (30) NOT NULL,
+apartment char(5) NOT NULL,
+street char (15) NOT NULL,
 city char (20) NOT NULL,
-state char(30) NOT NULL,
+state char(20) NOT NULL,
 pincode int NOT NULL,
 customer_id int,
 PRIMARY KEY(customer_id, pincode, apartment, street),

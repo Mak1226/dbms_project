@@ -1,14 +1,16 @@
-CREATE ROLE Mayank
-LOGIN
-PASSWORD "password";
+CREATE ROLE customer_
+LOGIN 
+PASSWORD 'dbms';
 
-CREATE ROLE Shailab
-CREATEDB
-LOGIN
-PASSWORD "password";
+GRANT UPDATE
+ON TABLE
+address
+TO customer_;
 
-CREATE ROLE Aditya
-SUPERUSER
-LOGIN
-PASSWORD "password";
+CREATE USER 
+aditya WITH
+PASSWORD 'aditya';
+
+GRANT customer_
+TO aditya;
 
