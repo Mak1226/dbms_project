@@ -1,5 +1,7 @@
 -- The function get_price will take product_id as an input and returns its price.
 
+-- Shailab ka phaltu procedure
+
 CREATE FUNCTION get_price(p_id int) RETURNS int
 LANGUAGE plpgsql
 AS
@@ -16,6 +18,7 @@ $$;
 
 SELECT get_price(<product_id>)
 
+
 -- update the STOCK in Product table
 
 CREATE OR REPLACE FUNCTION get_stock(pid int)
@@ -28,9 +31,9 @@ p int;
 BEGIN
 SELECT SUM(stock) INTO p FROM sells GROUP BY product_id HAVING product_id = pid;
 IF p IS NOT NULL THEN 
-UPDATE Product SET max = p WHERE product_id = pid; 
+UPDATE Product SET total = p WHERE product_id = pid; 
 ELSE 
-UPDATE Product SET max = 0 WHERE product_id = pid; 
+UPDATE Product SET total = 0 WHERE product_id = pid; 
 END IF;
 END;
 $$;
@@ -45,7 +48,7 @@ LANGUAGE plpgsql
 AS
 $$
 DECLARE
-amt int;
+amt float;
 BEGIN
 SELECT SUM(counts * cost) INTO amt 
 FROM contains
@@ -62,15 +65,44 @@ $$;
 
 SELECT get_amount(<order_id>);
 
-CREATE OR REPLACE FUNCTION(id_order int)
-RETURNS VOID
+-- trigger function
+
+CREATE OR REPLACE FUNCTION failed_payment_procedure(id_order int)
+RETURNS TRIGGER
+LANGUAGE plpgsql
 AS
 $$
 DECLARE
-pid int;
-oid int;
-amt int;
+change int;
 BEGIN
 UPDATE Orders
 SET status = 'Cancelled'
 WHERE order_id = id_order;
+
+UPDATE sells 
+SET stock = stock + contains.counts 
+FROM contains
+WHERE sells.seller_id = contains.seller_id 
+AND sells.product_id = contains.product_id 
+AND order_id = id_order;
+RETURN NEW;
+END;
+$$;
+
+-- procedure to place order from the cart
+
+CREATE OR REPLACE PROCEDURE place_order (cid int)
+LANGUAGE plpgsql
+as 
+$$
+DECLARE
+new_id int;
+BEGIN
+SELECT order_id INTO new_id FROM Orders ORDER BY order_id DESC;
+new_id = new_id + 1;
+INSERT INTO Orders (order_id,date,customer_id) values (new_id,CURRENT_DATE,cid);
+INSERT INTO contains SELECT counts, price, seller_id, product_id, new_id FROM Cart WHERE customer_id = cid;
+END;
+$$;
+
+-- procedure to change 

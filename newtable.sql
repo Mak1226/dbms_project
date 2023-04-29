@@ -8,7 +8,7 @@ DOB char(12)
 CREATE TABLE Product(
 product_id int NOT NULL,
 name char(50) NOT NULL,
-max int DEFAULT -1,
+total int DEFAULT -1,
 PRIMARY KEY(product_id)
 );
 CREATE TABLE Orders(
@@ -42,8 +42,8 @@ FOREIGN KEY (order_id) REFERENCES Orders (order_id)
 );
 CREATE TABLE Seller(
 seller_id int NOT NULL,
-name char (50) NOT NULL,
-Contact char(20) NOT NULL,
+name char (25) NOT NULL,
+Contact char(10) NOT NULL,
 PRIMARY KEY(seller_id)
 );
 CREATE TABLE sells (
@@ -61,15 +61,17 @@ cost int,
 seller_id int,
 product_id int,
 order_id int,
-PRIMARY KEY(product_id, order_id),
+PRIMARY KEY(product_id, order_id, seller_id),
 FOREIGN KEY (order_id) REFERENCES Orders (order_id),
 FOREIGN KEY (seller_id, product_id) REFERENCES sells (seller_id, product_id)
 );
 CREATE TABLE Cart(
 customer_id int,
 product_id int,
+seller_id int,
 counts int DEFAULT 1,
-PRIMARY KEY(customer_id, product_id),
+price int NOT NULL,
+PRIMARY KEY(customer_id, product_id, seller_id),
 FOREIGN KEY (customer_id) REFERENCES Customer (customer_id),
-FOREIGN KEY (product_id) REFERENCES Product (product_id)
+FOREIGN KEY (seller_id, product_id) REFERENCES sells(seller_id, product_id)
 );
