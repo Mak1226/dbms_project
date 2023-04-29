@@ -1,24 +1,5 @@
 -- The function get_price will take product_id as an input and returns its price.
 
--- Shailab ka phaltu procedure
-
-CREATE FUNCTION get_price(p_id int) RETURNS int
-LANGUAGE plpgsql
-AS
-$$
-DECLARE
-P_price int;
-BEGIN
-SELECT price INTO p_price
-FROM Product
-WHERE product_id = p_id;
-RETURN p_price;
-END;
-$$;
-
-SELECT get_price(<product_id>)
-
-
 -- update the STOCK in Product table
 
 CREATE OR REPLACE FUNCTION get_stock(pid int)
@@ -67,7 +48,7 @@ SELECT get_amount(<order_id>);
 
 -- trigger function
 
-CREATE OR REPLACE FUNCTION failed_payment_procedure(id_order int)
+CREATE OR REPLACE FUNCTION procedure_failed_payment()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 AS
@@ -75,16 +56,18 @@ $$
 DECLARE
 change int;
 BEGIN
-UPDATE Orders
-SET status = 'Cancelled'
-WHERE order_id = id_order;
+IF NEW.status ILIKE '%Failed%' THEN 
+    UPDATE Orders
+    SET status = 'Cancelled'
+    WHERE order_id = NEW.order_id;
 
-UPDATE sells 
-SET stock = stock + contains.counts 
-FROM contains
-WHERE sells.seller_id = contains.seller_id 
-AND sells.product_id = contains.product_id 
-AND order_id = id_order;
+    UPDATE sells 
+    SET stock = stock + contains.counts 
+    FROM contains
+    WHERE sells.seller_id = contains.seller_id 
+    AND sells.product_id = contains.product_id 
+    AND order_id = NEW.order_id;
+END IF;
 RETURN NEW;
 END;
 $$;

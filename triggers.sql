@@ -1,8 +1,7 @@
 CREATE TRIGGER failed_payment
 AFTER UPDATE OR INSERT ON PAYMENT
 FOR EACH ROW
-WHEN (NEW.status ilike 'Failed')
-EXECUTE FUNCTION failed_payment_procedure(NEW.order_id);
+EXECUTE PROCEDURE procedure_failed_payment();
 
 
 -- CREATE TRIGGER failed_payment
