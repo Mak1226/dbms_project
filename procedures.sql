@@ -43,3 +43,14 @@ END;
 $$;
 
 CALL get_amount(<order_id>)
+
+CREATE OR REPLACE PROCEDURE place_order(id int)
+LANGUAGE plpgsql
+AS
+$$
+DECLARE
+generate_order_id int;
+BEGIN
+INSERT INTO Orders(date, customer_id) values (current_date, id);
+SELECT order_id INTO generate_order_id FROM Orders ORDER BY DESC LIMIT 1; 
+INSERT INTO contains(counts, product_id, order_id) SELECT counts, product_id FROM Cart WHERE customer_id = id;

@@ -1,8 +1,9 @@
 CREATE TABLE Customer(
 customer_id int PRIMARY KEY,
 name char(30) NOT NULL,
-email char(50),
+email char(50) NOT NULL,
 contact char(15) NOT NULL,
+passkey 
 DOB char(12)
 );
 CREATE TABLE Product(

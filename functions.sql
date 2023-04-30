@@ -72,6 +72,27 @@ RETURN NEW;
 END;
 $$;
 
+-- trigger function for Cancelled Order
+
+CREATE OR REPLACE FUNCION procedure_cancelled_order()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS
+$$
+BEGIN
+IF NEW.status ILIKE '%Cancelled%' THEN
+    UPDATE sells
+    SET stock = stock + contains.counts
+    FROM contains
+    WHERE sells.seller_id = contains.seller_id
+    AND sells.product_id = contains.product_id
+    AND order_id = NEW.order_id;
+END IF;
+RETURN NEW;
+END;
+$$;
+
+
 -- procedure to place order from the cart
 
 CREATE OR REPLACE PROCEDURE place_order (cid int)
