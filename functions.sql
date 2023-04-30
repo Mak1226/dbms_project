@@ -81,10 +81,19 @@ $$
 DECLARE
 new_id int;
 BEGIN
-SELECT order_id INTO new_id FROM Orders ORDER BY order_id DESC;
+SELECT order_id INTO new_id FROM Orders ORDER BY order_id DESC LIMIT 1;
 new_id = new_id + 1;
-INSERT INTO Orders (order_id,date,customer_id) values (new_id,CURRENT_DATE,cid);
+INSERT INTO Orders (order_id,date,customer_id) values (new_id,to_char(CURRENT_DATE, 'DD-MM-YYYY'),cid);
 INSERT INTO contains SELECT counts, price, seller_id, product_id, new_id FROM Cart WHERE customer_id = cid;
+
+UPDATE sells
+SET stock = stock - counts
+FROM cart
+WHERE sells.seller_id = cart.seller_id 
+AND sells.product_id = cart.product_id ;
+
+DELETE FROM cart
+WHERE  customer_id = cid;
 END;
 $$;
 
