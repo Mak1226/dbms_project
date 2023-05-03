@@ -3,7 +3,7 @@ customer_id int PRIMARY KEY,
 name char(30) NOT NULL,
 email char(50) NOT NULL,
 contact char(15) NOT NULL,
-passkey 
+passkey text,
 DOB char(12)
 );
 CREATE TABLE Product(

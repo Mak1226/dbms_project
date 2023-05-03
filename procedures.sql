@@ -54,3 +54,17 @@ BEGIN
 INSERT INTO Orders(date, customer_id) values (current_date, id);
 SELECT order_id INTO generate_order_id FROM Orders ORDER BY DESC LIMIT 1; 
 INSERT INTO contains(counts, product_id, order_id) SELECT counts, product_id FROM Cart WHERE customer_id = id;
+
+create or replace procedure add_passkey()
+LANGUAGE plpgsql
+as $$
+declare 
+pass text;
+cid int;
+begin
+for cid in select customer_id from customer loop
+  select (name || customer_id) into pass from customer where customer_id = cid;
+  update customer set passkey = md5(pass) where customer_id = cid;
+end loop;
+end;
+$$;

@@ -14,3 +14,10 @@ PASSWORD 'aditya';
 GRANT customer_
 TO aditya;
 
+
+CREATE ROLE adi1;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE customer, orders TO adi1; 
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO adi1; 
+ALTER TABLE customer ENABLE ROW LEVEL SECURITY;
+CREATE POLICY adi1_policy ON customer FOR ALL TO adi1 USING (customer_id = 104);
+

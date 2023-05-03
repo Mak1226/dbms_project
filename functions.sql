@@ -118,4 +118,19 @@ WHERE  customer_id = cid;
 END;
 $$;
 
--- procedure to change 
+-- trigger procedure to add new user and create role 
+
+CREATE OR REPLACE FUNCTION create_user_role()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+declare
+id text;
+pass text;
+BEGIN
+select new.customer_id into id;
+select new.passkey into pass;
+EXECUTE FROMAT('CREATE ROLE %I LOGIN PASSWORD %L',id,pass);
+  RETURN NEW;
+END;
+$$;
