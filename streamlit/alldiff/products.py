@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 from databases import connect_to_database
-from databases import connect_to_user
+# from databases import connect_to_user
 from footer import footer
 from query import *
 # st.set_page_config(page_title="Online Store", page_icon=":money_with_wings:")

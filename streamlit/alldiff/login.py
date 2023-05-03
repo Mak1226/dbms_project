@@ -14,9 +14,9 @@ def login_page():
         # Connect to database
         conn = psycopg2.connect(
             host="localhost",
-            database="test_project",
+            database="dbms",
             user="postgres",
-            password="project"
+            password="postgres"
         )
         cur = conn.cursor()
 

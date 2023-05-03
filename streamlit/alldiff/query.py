@@ -1,6 +1,6 @@
 import streamlit as st
 from databases import *
-mydb = connect_to_user()
+mydb = connect_to_database()
 
 
 def get_product_info_id(product_id):
