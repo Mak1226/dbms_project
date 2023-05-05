@@ -34,3 +34,16 @@ create or replace view seller_prod_view as
 --------------------------------------------------
 
 
+
+
+create or replace view customer_product_details as (
+    select p.name, s.name, sells.price, sells.stock from sells 
+    natural join product as p
+    natural join seller as s
+);
+
+CREATE or replace VIEW product_price_avg AS (
+SELECT pname, cast(AVG(sells.price) as integer) AS average_price
+FROM Product
+LEFT JOIN sells ON Product.product_id = sells.product_id
+GROUP BY Product.product_id, pname);

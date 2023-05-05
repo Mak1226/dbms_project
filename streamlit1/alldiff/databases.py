@@ -3,19 +3,19 @@ import psycopg2
 def connect_to_database():
     conn = psycopg2.connect(
         host='localhost',
-        database='test_project',
+        database='dbms',
         user='postgres',
-        password='project'
+        password='postgres'
     )
     return conn
 
-def connect_to_user(x = None):
-    conn = psycopg2.connect(
-        host = 'localhost',
-        database = 'test_project',
-        user='aditya',
-        password= 'aditya'
+# def connect_to_user(x = None):
+#     conn = psycopg2.connect(
+#         host = 'localhost',
+#         database = 'dbms',
+#         user='aditya',
+#         password= 'aditya'
 
-    )
-    return conn
+#     )
+#     return conn
 
