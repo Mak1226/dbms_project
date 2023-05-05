@@ -75,4 +75,4 @@ price int NOT NULL,
 PRIMARY KEY(customer_id, product_id, seller_id),
 FOREIGN KEY (customer_id) REFERENCES Customer (customer_id),
 FOREIGN KEY (seller_id, product_id) REFERENCES sells(seller_id, product_id)
-);
+);              

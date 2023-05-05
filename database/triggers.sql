@@ -3,8 +3,8 @@ AFTER UPDATE OR INSERT ON PAYMENT
 FOR EACH ROW
 EXECUTE PROCEDURE procedure_failed_payment();
 
-
 CREATE TRIGGER add_new_user
-BEFORE INSERT ON customer
+AFTER INSERT ON customer
 FOR EACH ROW
-EXECUTE FUNCION create_user_role();
+EXECUTE FUNCION role_creation();
+

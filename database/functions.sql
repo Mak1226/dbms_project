@@ -124,13 +124,39 @@ CREATE OR REPLACE FUNCTION create_user_role()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 AS $$
-declare
+DECLARE
 id text;
 pass text;
 BEGIN
 select new.customer_id into id;
 select new.passkey into pass;
 EXECUTE FROMAT('CREATE ROLE %I LOGIN PASSWORD %L',id,pass);
-  RETURN NEW;
+EXECUTE FORMAT('CREATE POLICY cust_info ON customer FOR SELECT ON ')
+RETURN NEW;
+END;
+$$;
+
+CREATE OR REPLACE FUNCION role_creation()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+DECLARE 
+id int;
+idname text;
+pass text;
+BEGIN
+SELECT NEW.customer_id INTO id;
+SELECT id::varchar(5) INTO idname;
+SELECT NEW.passkey INTO pass;
+EXECUTE FORMAT('CREATE ROLE %I LOGIN PASSWORD %L', idname, pass);
+EXECUTE FORMAT('CREATE POLICY customer_view ON customer FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id);
+EXECUTE FORMAT('CREATE POLICY address_view ON address FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id); 
+EXECUTE FORMAT('CREATE POLICY orders_view ON orders FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id);
+EXECUTE FORMAT('CREATE POLICY payment_view ON payment FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id); 
+EXECUTE FORMAT('GRANT SELECT ON customer TO %I', idname);
+EXECUTE FORMAT('GRANT SELECT ON address TO %I', idname);
+EXECUTE FORMAT('GRANT SELECT ON orders TO %I', idname);
+EXECUTE FORMAT('GRANT SELECT ON payment TO %I', idname);
+RETURN NEW;
 END;
 $$;
