@@ -181,7 +181,7 @@ DECLARE
 new_id int;
 BEGIN
 SELECT product_id INTO new_id FROM Product ORDER BY product_id DESC;
-new_id = new_id + 1
+new_id = new_id + 1;
 INSERT INTO Product (product_id, pname) VALUES (new_id, pro);
 INSERT INTO sells (product_id, seller_id, price, stock) VALUES (new_id, id, cost, stk);
 END;
