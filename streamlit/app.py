@@ -7,18 +7,18 @@ from PIL import Image
 # Define database connection parameters
 DATABASE_URL = "localhost"
 DATABASE_PORT = "5432"
-DATABASE_NAME = "dbms"
+DATABASE_NAME = "dbms_project"
 DATABASE_USER = "postgres"
-DATABASE_PASSWORD = 'postgres'
+DATABASE_PASSWORD = 'project'
 
 # Define database query
 
 
 # Connect to database
 conn = psycopg2.connect(
-    database='dbms',
+    database='dbms_project',
     user='postgres',
-    password='postgres',
+    password='project',
     host='localhost',
     port=5432
 )
