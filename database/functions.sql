@@ -46,7 +46,7 @@ AND sells.product_id = cart.product_id ;
 DELETE FROM cart
 WHERE  customer_id = cid;
 
-SELECT get_amount(new_id)
+SELECT get_amount(new_id);
 END;
 $$;
 
