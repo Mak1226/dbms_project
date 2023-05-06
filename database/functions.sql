@@ -154,7 +154,7 @@ $$ LANGUAGE plpgsql;
 
 -- trigger function for Cancelled Order
 
-CREATE OR REPLACE FUNCION procedure_cancelled_order()
+CREATE OR REPLACE FUNCTION procedure_cancelled_order()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 AS
