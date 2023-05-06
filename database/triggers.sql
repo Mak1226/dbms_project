@@ -6,7 +6,7 @@ EXECUTE PROCEDURE procedure_failed_payment();
 CREATE TRIGGER add_new_user
 AFTER INSERT ON customer
 FOR EACH ROW
-EXECUTE FUNCION role_creation();
+EXECUTE FUNCTION role_creation();
 
 CREATE TRIGGER update_product_total_stock_trigger
 AFTER UPDATE OR INSERT ON sells
