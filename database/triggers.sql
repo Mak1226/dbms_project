@@ -25,9 +25,15 @@ CREATE TRIGGER check_stock_trigger
 BEFORE INSERT ON Cart
 FOR EACH ROW
 EXECUTE FUNCTION check_stock();
+-- insert into cart values(101, 214, 518, 10, 461.3);
 
 
 CREATE TRIGGER cancel_order
 AFTER UPDATE ON Orders
 FOR EACH ROW
 EXECUTE FUNCTION procedure_cancelled_order()
+
+-- insert into cart values(101, 214, 518, 1, 461.3);
+-- place_order(101);
+-- update orders 
+-- set status = 'Cancelled' where order_id = 312;
