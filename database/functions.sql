@@ -1,25 +1,4 @@
--- The function get_price will take product_id as an input and returns its price.
-
--- update the STOCK in Product table
-
-CREATE OR REPLACE FUNCTION get_stock(pid int)
-RETURNS VOID
-LANGUAGE plpgsql
-AS
-$$
-DECLARE
-p int;
-BEGIN
-SELECT SUM(stock) INTO p FROM sells GROUP BY product_id HAVING product_id = pid;
-IF p IS NOT NULL THEN 
-UPDATE Product SET total = p WHERE product_id = pid; 
-ELSE 
-UPDATE Product SET total = 0 WHERE product_id = pid; 
-END IF;
-END;
-$$;
-
-SELECT get_stock(<product_id>)
+-- 2 FUNCTIONS
 
 -- update the amount in Orders table
 
@@ -44,9 +23,36 @@ END IF;
 END;
 $$;
 
-SELECT get_amount(<order_id>);
+-- procedure to place order from the cart
 
--- trigger function
+CREATE OR REPLACE PROCEDURE place_order (cid int)
+LANGUAGE plpgsql
+as 
+$$
+DECLARE
+new_id int;
+BEGIN
+SELECT order_id INTO new_id FROM Orders ORDER BY order_id DESC LIMIT 1;
+new_id = new_id + 1;
+INSERT INTO Orders (order_id,date,customer_id) values (new_id,to_char(CURRENT_DATE, 'DD-MM-YYYY'),cid);
+INSERT INTO contains SELECT counts, price, seller_id, product_id, new_id FROM Cart WHERE customer_id = cid;
+
+UPDATE sells
+SET stock = stock - counts
+FROM cart
+WHERE sells.seller_id = cart.seller_id 
+AND sells.product_id = cart.product_id ;
+
+DELETE FROM cart
+WHERE  customer_id = cid;
+
+SELECT get_amount(new_id)
+END;
+$$;
+
+-- 5 TRIGGERS
+
+-- trigger function for Failed payment
 
 CREATE OR REPLACE FUNCTION procedure_failed_payment()
 RETURNS TRIGGER
@@ -72,6 +78,80 @@ RETURN NEW;
 END;
 $$;
 
+-- trigger function to add new role 
+
+CREATE OR REPLACE FUNCION role_creation()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+DECLARE 
+id int;
+idname text;
+pass text;
+BEGIN
+SELECT NEW.customer_id INTO id;
+SELECT id::varchar(5) INTO idname;
+SELECT NEW.passkey INTO pass;
+EXECUTE FORMAT('CREATE ROLE %I LOGIN PASSWORD %L', idname, pass);
+EXECUTE FORMAT('CREATE POLICY customer_view ON customer FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id);
+EXECUTE FORMAT('CREATE POLICY address_view ON address FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id); 
+EXECUTE FORMAT('CREATE POLICY orders_view ON orders FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id);
+EXECUTE FORMAT('CREATE POLICY payment_view ON payment FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id); 
+EXECUTE FORMAT('CREATE POLICY cart_view ON cart FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id);
+EXECUTE FORMAT('CREATE POLICY cart_insert ON cart FOR INSERT TO %I WITH CHECK (customer_id = %s::integer)', idname, id);
+EXECUTE FORMAT('CREATE POLICY cart_update ON cart FOR UPDATE TO %I USING (customer_id = %s::integer)', idname, id);
+EXECUTE FORMAT('CREATE POLICY cart_delete ON cart FOR DELETE TO %I WITH CHECK (customer_id = = %s::integer)', idname, id);
+EXECUTE FORMAT('GRANT SELECT ON customer TO %I', idname);
+EXECUTE FORMAT('GRANT SELECT ON address TO %I', idname);
+EXECUTE FORMAT('GRANT SELECT ON orders TO %I', idname);
+EXECUTE FORMAT('GRANT SELECT ON payment TO %I', idname);
+EXECUTE FORMAT('GRANT SELECT, UPDATE(counts), INSERT, DELETE ON Cart TO %I', idname);
+RETURN NEW;
+END;
+$$;
+
+-- trigger function to update the total stock of product
+
+CREATE OR REPLACE FUNCTION get_stock()
+RETURNS trigger
+LANGUAGE plpgsql
+AS
+$$
+DECLARE
+p int;
+pid int;
+BEGIN
+SELECT NEW.product_id INTO pid;
+SELECT SUM(stock) INTO p FROM sells WHERE product_id = pid;
+IF p IS NOT NULL THEN 
+UPDATE Product SET total = p WHERE product_id = pid; 
+ELSE 
+UPDATE Product SET total = 0 WHERE product_id = pid; 
+END IF;
+RETURN NULL;
+END;
+$$;
+
+-- trigger function to check the cart stock
+
+CREATE OR REPLACE FUNCTION check_stock()
+RETURNS TRIGGER AS $$
+DECLARE
+stock_count int;
+BEGIN
+
+    select stock into stock_count  from sells WHERE seller_id = NEW.seller_id AND product_id = NEW.product_id;
+    IF EXISTS (
+        SELECT 1 FROM sells
+        WHERE seller_id = NEW.seller_id AND product_id = NEW.product_id AND stock < NEW.counts
+    ) THEN
+        RAISE NOTICE 'Available stock count is %, So, you cannot add % stock in your cart', stock_count, NEW.counts;
+        RETURN NULL;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
 -- trigger function for Cancelled Order
 
 CREATE OR REPLACE FUNCION procedure_cancelled_order()
@@ -92,71 +172,17 @@ RETURN NEW;
 END;
 $$;
 
-
--- procedure to place order from the cart
-
-CREATE OR REPLACE PROCEDURE place_order (cid int)
+CREATE OR REPLACE FUNCTION add_new_product(pro text, id int, cost int, stk int)
+RETURNS VOID
 LANGUAGE plpgsql
-as 
+AS
 $$
 DECLARE
 new_id int;
 BEGIN
-SELECT order_id INTO new_id FROM Orders ORDER BY order_id DESC LIMIT 1;
-new_id = new_id + 1;
-INSERT INTO Orders (order_id,date,customer_id) values (new_id,to_char(CURRENT_DATE, 'DD-MM-YYYY'),cid);
-INSERT INTO contains SELECT counts, price, seller_id, product_id, new_id FROM Cart WHERE customer_id = cid;
-
-UPDATE sells
-SET stock = stock - counts
-FROM cart
-WHERE sells.seller_id = cart.seller_id 
-AND sells.product_id = cart.product_id ;
-
-DELETE FROM cart
-WHERE  customer_id = cid;
-END;
-$$;
-
--- trigger procedure to add new user and create role 
-
-CREATE OR REPLACE FUNCTION create_user_role()
-RETURNS TRIGGER
-LANGUAGE plpgsql
-AS $$
-DECLARE
-id text;
-pass text;
-BEGIN
-select new.customer_id into id;
-select new.passkey into pass;
-EXECUTE FROMAT('CREATE ROLE %I LOGIN PASSWORD %L',id,pass);
-EXECUTE FORMAT('CREATE POLICY cust_info ON customer FOR SELECT ON ')
-RETURN NEW;
-END;
-$$;
-
-CREATE OR REPLACE FUNCION role_creation()
-RETURNS TRIGGER
-LANGUAGE plpgsql
-AS $$
-DECLARE 
-id int;
-idname text;
-pass text;
-BEGIN
-SELECT NEW.customer_id INTO id;
-SELECT id::varchar(5) INTO idname;
-SELECT NEW.passkey INTO pass;
-EXECUTE FORMAT('CREATE ROLE %I LOGIN PASSWORD %L', idname, pass);
-EXECUTE FORMAT('CREATE POLICY customer_view ON customer FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id);
-EXECUTE FORMAT('CREATE POLICY address_view ON address FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id); 
-EXECUTE FORMAT('CREATE POLICY orders_view ON orders FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id);
-EXECUTE FORMAT('CREATE POLICY payment_view ON payment FOR SELECT TO %I USING (customer_id = %s::integer)', idname, id); 
-EXECUTE FORMAT('GRANT SELECT ON customer TO %I', idname);
-EXECUTE FORMAT('GRANT SELECT ON address TO %I', idname);
-EXECUTE FORMAT('GRANT SELECT ON orders TO %I', idname);
-EXECUTE FORMAT('GRANT SELECT ON payment TO %I', idname);
-RETURN NEW;
+SELECT product_id INTO new_id FROM Product ORDER BY product_id DESC;
+new_id = new_id + 1
+INSERT INTO Product (product_id, pname) VALUES (new_id, pro);
+INSERT INTO sells (product_id, seller_id, price, stock) VALUES (new_id, id, cost, stk);
 END;
 $$;

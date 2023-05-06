@@ -1,4 +1,4 @@
--- 1. How much worth of products are sold and how many orders are placed on a certain date 
+-- 1. How much worth of products are sold and how many orders are placed on a certain date
 SELECT Orders.date,
 COUNT(Order.order_id), SUM(Orders.amount)
 FROM Orders
@@ -15,7 +15,7 @@ GROUP BY Orders.order_id
 HAVING
 Orders.order_id=<Orders.order_id>
 
--- 3. Total amount each spent by each customer
+-- 3. Total amount spent by each customer
 SELECT Customer.customer_id, SUM(Orders.amount)
 FROM Orders
 NATURAL JOIN Customer

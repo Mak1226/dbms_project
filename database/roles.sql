@@ -1,23 +1,36 @@
-CREATE ROLE customer_
-LOGIN 
-PASSWORD 'dbms';
+-- CREATE ROLE customer_
+-- LOGIN 
+-- PASSWORD 'dbms';
 
-GRANT UPDATE
-ON TABLE
-address
-TO customer_;
+-- GRANT UPDATE
+-- ON TABLE
+-- address
+-- TO customer_;
 
-CREATE USER 
-aditya WITH
-PASSWORD 'aditya';
+-- CREATE USER 
+-- aditya WITH
+-- PASSWORD 'aditya';
 
-GRANT customer_
-TO aditya;
+-- GRANT customer_
+-- TO aditya;
 
 
-CREATE ROLE adi1;
-GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE customer, orders TO adi1; 
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO adi1; 
-ALTER TABLE customer ENABLE ROW LEVEL SECURITY;
-CREATE POLICY adi1_policy ON customer FOR ALL TO adi1 USING (customer_id = 104);
+-- Create customer role
+CREATE ROLE customer_role LOGIN PASSOWORD "passkey";
+GRANT SELECT ON Customer, Address, Payment, Orders, sells, contains;
 
+
+-- Create seller role
+CREATE ROLE seller;
+
+-- Permissions required for seller
+GRANT SELECT, INSERT, UPDATE, DELETE ON sells TO seller;
+GRANT SELECT, INSERT, UPDATE, DELETE ON Product TO seller;
+GRANT SELECT, INSERT, UPDATE, DELETE ON contains TO seller;
+GRANT SELECT ON Orders TO seller;
+
+-- Create admin role
+CREATE ROLE admin LOGIN PASSOWORD "admindatabase";
+
+-- Permissions required for admin
+GRANT ALL ON ALL TABLES IN SCHEMA "public" T0 admin;

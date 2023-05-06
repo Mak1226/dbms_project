@@ -8,7 +8,7 @@ DOB char(12)
 );
 CREATE TABLE Product(
 product_id int NOT NULL,
-name char(50) NOT NULL,
+pname char(50) NOT NULL,
 total int DEFAULT -1,
 PRIMARY KEY(product_id)
 );
@@ -43,7 +43,7 @@ FOREIGN KEY (order_id) REFERENCES Orders (order_id)
 );
 CREATE TABLE Seller(
 seller_id int NOT NULL,
-name char (25) NOT NULL,
+sname char (25) NOT NULL,
 Contact char(10) NOT NULL,
 PRIMARY KEY(seller_id)
 );
@@ -75,4 +75,4 @@ price int NOT NULL,
 PRIMARY KEY(customer_id, product_id, seller_id),
 FOREIGN KEY (customer_id) REFERENCES Customer (customer_id),
 FOREIGN KEY (seller_id, product_id) REFERENCES sells(seller_id, product_id)
-);              
+);
