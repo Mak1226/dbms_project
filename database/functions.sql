@@ -80,7 +80,7 @@ $$;
 
 -- trigger function to add new role 
 
-CREATE OR REPLACE FUNCION role_creation()
+CREATE OR REPLACE FUNCTION role_creation()
 RETURNS TRIGGER
 LANGUAGE plpgsql
 AS $$
