@@ -21,6 +21,10 @@ customer_id int,
 PRIMARY KEY(order_id),
 FOREIGN KEY (customer_id) REFERENCES Customer (customer_id)
 );
+
+ALTER TABLE Orders 
+ADD CONSTRAINT chk_status CHECK (status IN ('Ordered', 'Delivered', 'Cancelled', 'Shipment'));
+
 CREATE TABLE Address(
 apartment char(5) NOT NULL,
 street char (15) NOT NULL,
@@ -41,6 +45,10 @@ PRIMARY KEY(payment_id),
 FOREIGN KEY (customer_id) REFERENCES Customer (customer_id),
 FOREIGN KEY (order_id) REFERENCES Orders (order_id)
 );
+
+ALTER TABLE Payment 
+ADD CONSTRAINT chk_status_payment CHECK (status IN ('Pending', 'Accepted', 'Failed'));
+
 CREATE TABLE Seller(
 seller_id int NOT NULL,
 sname char (25) NOT NULL,
