@@ -1,7 +1,7 @@
 CREATE OR REPLACE VIEW customer_product_details AS (
 SELECT product.pname AS Product_Name, 
 seller.sname AS Seller_Name, 
-sells.price, sells.stock 
+sells.price, sells.stock, product_id, seller_id
 FROM sells 
 NATURAL JOIN product     
 NATURAL JOIN seller);

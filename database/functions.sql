@@ -2,8 +2,7 @@
 
 -- update the amount in Orders table
 
-CREATE OR REPLACE FUNCTION get_amount(id int)
-RETURNS VOID
+CREATE OR REPLACE PROCEDURE get_amount(id int)
 LANGUAGE plpgsql
 AS
 $$
@@ -46,7 +45,7 @@ AND sells.product_id = cart.product_id ;
 DELETE FROM cart
 WHERE  customer_id = cid;
 
-SELECT get_amount(new_id);
+CALL get_amount(new_id);
 END;
 $$;
 

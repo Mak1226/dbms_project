@@ -16,8 +16,8 @@
 
 
 -- Create customer role
-CREATE ROLE customer_role LOGIN PASSWORD 'passkey';
-GRANT SELECT ON Customer, Address, Payment, Orders, sells, contains to customer_role;
+CREATE ROLE customer_role LOGIN PASSOWORD "passkey";
+GRANT SELECT ON Customer, Address, Payment, Orders, sells, contains;
 
 
 -- Create seller role
@@ -30,7 +30,7 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON contains TO seller;
 GRANT SELECT ON Orders TO seller;
 
 -- Create admin role
-CREATE ROLE admin LOGIN PASSWORD 'admindatabase';
+CREATE ROLE admin LOGIN PASSOWORD "admindatabase";
 
 -- Permissions required for admin
-GRANT ALL ON ALL TABLES IN SCHEMA "public" To admin;
+GRANT ALL ON ALL TABLES IN SCHEMA "public" T0 admin;

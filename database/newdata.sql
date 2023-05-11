@@ -1,4 +1,4 @@
-insert into customer (customer_id, name, email, contact, DOB) values (101, 'Christi', 'ccrouch0@ucoz.com', '4771906595', '21-02-2023');
+gitinsert into customer (customer_id, name, email, contact, DOB) values (101, 'Christi', 'ccrouch0@ucoz.com', '4771906595', '21-02-2023');
 insert into customer (customer_id, name, email, contact, DOB) values (102, 'Corrinne', 'cpigdon1@businessinsider.com', '3675391549', '04-06-2022');
 insert into customer (customer_id, name, email, contact, DOB) values (103, 'Xever', 'xgun2@blinklist.com', '4031319159', '24-06-2022');
 insert into customer (customer_id, name, email, contact, DOB) values (104, 'Rutherford', 'raleksandrikin3@state.tx.us', '5299783454', '19-06-2022');
