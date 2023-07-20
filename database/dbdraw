@@ -1,0 +1,77 @@
+TABLE Customer{
+customer_id int [PRIMARY KEY],
+cname char(30)
+email char(50)
+contact char(15)
+passkey char(20)
+DOB char(10)
+};
+TABLE Product{
+product_id int [PRIMARY KEY]
+pname char(15)
+total int
+}
+TABLE Orders{
+order_id int [PRIMARY KEY]
+date char (10)
+status char (10)
+amount int
+customer_id int [ref: < Customer.customer_id]
+}
+TABLE Address{
+apartment char (5)
+street char (15)
+city char (20)
+state char (20)
+pincode int
+customer_id int [ref: ]
+[PRIMARY KEY](customer_id, pincode, apartment, street)
+FOREIGN KEY (customer_id) REFERENCES Customer (customer_id)
+}
+TABLE Payment{
+payment_id int
+mode char (20)
+status char (10)
+customer_id int
+order_id int
+[PRIMARY KEY](payment_id)
+FOREIGN KEY (customer_id) REFERENCES Customer (customer_id)
+FOREIGN KEY (order_id) REFERENCES Orders (order_id)
+}
+TABLE Seller{
+seller_id int
+sname char (25)
+email char (50)
+contact char (15)
+passkey char (20)
+[PRIMARY KEY](seller_id)
+}
+TABLE sells {
+stock int
+price decimal
+seller_id int
+product_id int
+[PRIMARY KEY](seller_id, product_id)
+FOREIGN KEY (seller_id) REFERENCES Seller (seller_id)
+FOREIGN KEY (product_id) REFERENCES Product (product_id)
+}
+TABLE contains{
+counts int
+cost int
+seller_id int
+product_id int
+order_id int
+[PRIMARY KEY](product_id, order_id, seller_id)
+FOREIGN KEY (order_id) REFERENCES Orders (order_id)
+FOREIGN KEY (seller_id, product_id) REFERENCES sells (seller_id, product_id)
+}
+TABLE Cart{
+customer_id int
+product_id int
+seller_id int
+counts int
+price int
+[PRIMARY KEY](customer_id, product_id, seller_id)
+FOREIGN KEY (customer_id) REFERENCES Customer (customer_id)
+FOREIGN KEY (seller_id, product_id) REFERENCES sells(seller_id, product_id)
+}

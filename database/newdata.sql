@@ -1,28 +1,28 @@
-gitinsert into customer (customer_id, name, email, contact, DOB) values (101, 'Christi', 'ccrouch0@ucoz.com', '4771906595', '21-02-2023');
-insert into customer (customer_id, name, email, contact, DOB) values (102, 'Corrinne', 'cpigdon1@businessinsider.com', '3675391549', '04-06-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (103, 'Xever', 'xgun2@blinklist.com', '4031319159', '24-06-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (104, 'Rutherford', 'raleksandrikin3@state.tx.us', '5299783454', '19-06-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (105, 'Cary', 'cisard4@dot.gov', '5013880833', '24-04-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (106, 'Tootsie', 'tdumphry5@dedecms.com', '5077491812', '06-04-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (107, 'Golda', 'gchipps6@exblog.jp', '2466489343', '11-05-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (108, 'Brinn', 'badamkiewicz7@amazon.co.jp', '7002744697', '21-05-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (109, 'Seward', 'sbrowncey8@independent.co.uk', '7454888788', '10-11-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (110, 'Britni', 'blonghi9@163.com', '9753200742', '15-02-2023');
-insert into customer (customer_id, name, email, contact, DOB) values (111, 'Stanly', 'scausera@tuttocitta.it', '8822248254', '19-04-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (112, 'Cybil', 'clipsettb@marketwatch.com', '3758593945', '26-05-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (113, 'Aurie', 'adesmondc@ed.gov', '3441451500', '30-10-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (114, 'Lavina', 'lhuged@gizmodo.com', '2136338555', '07-01-2023');
-insert into customer (customer_id, name, email, contact, DOB) values (115, 'Chad', 'cdemangee@ycombinator.com', '2455264262', '31-07-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (116, 'Zared', 'zbanisterf@usnews.com', '2549480633', '25-06-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (117, 'Cherrita', 'cheffrong@wix.com', '2783874984', '25-08-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (118, 'Alana', 'alattimerh@spotify.com', '5737598796', '16-01-2023');
-insert into customer (customer_id, name, email, contact, DOB) values (119, 'Una', 'ugendersi@ebay.com', '8267294051', '19-08-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (120, 'Dukey', 'dpattisonj@google.com.hk', '3786087001', '28-06-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (121, 'Wylie', 'wcotilardk@latimes.com', '6999451023', '31-12-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (122, 'Kissee', 'kbigglestonel@smh.com.au', '1231980412', '08-04-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (123, 'Ertha', 'emachargm@springer.com', '4408114969', '31-12-2022');
-insert into customer (customer_id, name, email, contact, DOB) values (124, 'Stacy', 'smcgilbenn@mit.edu', '3152627346', '24-03-2023');
-insert into customer (customer_id, name, email, contact, DOB) values (125, 'Reuven', 'rvobeso@virginia.edu', '8985518947', '20-01-2023');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (101, 'Will', 'wbrotherwood0@com.com', '3064790922', 'Will101', '07-10-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (102, 'Rad', 'rromero1@go.com', '5779554880', 'Rad102', '15-04-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (103, 'Carie', 'crycraft2@smh.com.au', '1469935671', 'Carie103', '26-01-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (104, 'Malinde', 'mstiff3@google.ca', '6418179554', 'Malinde104', '07-10-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (105, 'Veradis', 'vdemattia4@goo.gl', '3929322418', 'Veradis105', '25-12-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (106, 'Janek', 'jkeddle5@cnn.com', '7253241649', 'Janek106', '14-04-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (107, 'Gracie', 'ghouston6@usa.gov', '8453366418', 'Gracie107', '25-10-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (108, 'Abbi', 'ahardage7@amazon.co.jp', '2552739013', 'Abbi108', '05-05-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (109, 'Terrence', 'tsweetzer8@state.gov', '4347747908', 'Terrence109', '23-01-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (110, 'Daveen', 'dmenier9@a8.net', '2193067247', 'Daveen110', '06-11-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (111, 'Myca', 'mmatityahua@pbs.org', '7738559503', 'Myca111', '26-06-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (112, 'Beitris', 'btremontanab@psu.edu', '1368341018', 'Beitris112', '14-05-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (113, 'Jewel', 'jkenawayc@epa.gov', '2471311692', 'Jewel113', '10-02-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (114, 'Whit', 'wcarlesd@virginia.edu', '5022907859', 'Whit114', '21-12-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (115, 'Penn', 'phendriche@theatlantic.com', '1503044955', 'Penn115', '31-03-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (116, 'Nelie', 'nseppeyf@spiegel.de', '4903973335', 'Nelie116', '20-07-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (117, 'Nikolaos', 'nendeang@businesswire.com', '6273715766', 'Nikolaos117', '05-12-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (118, 'Kiersten', 'klindh@usnews.com', '2093872671', 'Kiersten118', '18-04-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (119, 'Gwyneth', 'gfradsoni@uiuc.edu', '4325473024', 'Gwyneth119', '03-05-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (120, 'Caresse', 'cswidenbankj@gravatar.com', '9667709632', 'Caresse120', '17-11-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (121, 'Gaby', 'gchantlerk@foxnews.com', '2939353052', 'Gaby121', '11-03-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (122, 'Marlie', 'mmosebyl@photobucket.com', '7113892919', 'Marlie122', '27-07-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (123, 'Ulrika', 'ubainem@xinhuanet.com', '9359271799', 'Ulrika123', '26-02-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (124, 'Chantal', 'cfibbittsn@altervista.org', '6928764387', 'Chantal124', '18-02-2022');
+insert into customer (customer_id, cname, email, contact, passkey, dob) values (125, 'Ulrica', 'udealeyo@virginia.edu', '5901557976', 'Ulrica125', '05-03-2022');
 insert into product (product_id, pname) values (201, 'umbrella');
 insert into product (product_id, pname) values (202, 'charger');
 insert into product (product_id, pname) values (203, 'sneakers');
@@ -48,16 +48,26 @@ insert into product (product_id, pname) values (222, 'pillow');
 insert into product (product_id, pname) values (223, 'lipstick');
 insert into product (product_id, pname) values (224, 'popcorn');
 insert into product (product_id, pname) values (225, 'lipstick');
-insert into orders (order_id, status, date, customer_id) values (301, 'Delivered', '23-11-2022', 110);
-insert into orders (order_id, status, date, customer_id) values (302, 'Ordered', '18-11-2022', 104);
-insert into orders (order_id, status, date, customer_id) values (303, 'Cancelled', '30-12-2022', 114);
-insert into orders (order_id, status, date, customer_id) values (304, 'Delivered', '29-12-2022', 110);
-insert into orders (order_id, status, date, customer_id) values (305, 'Ordered', '10-05-2022', 107);
-insert into orders (order_id, status, date, customer_id) values (306, 'Delivered', '02-04-2022', 116);
-insert into orders (order_id, status, date, customer_id) values (307, 'Cancelled', '20-11-2022', 107);
-insert into orders (order_id, status, date, customer_id) values (308, 'Ordered', '30-11-2022', 104);
-insert into orders (order_id, status, date, customer_id) values (309, 'Delivered', '27-10-2022', 122);
-insert into orders (order_id, status, date, customer_id) values (310, 'Cancelled', '23-11-2022', 102);
+insert into payment (payment_id, mode, status) values (401, 'COD', 'Successful');
+insert into payment (payment_id, mode, status) values (402, 'COD', 'Failed');
+insert into payment (payment_id, mode, status) values (403, 'Wallet', 'Pending');
+insert into payment (payment_id, mode, status) values (404, 'UPI', 'Failed');
+insert into payment (payment_id, mode, status) values (405, 'Card', 'Pending');
+insert into payment (payment_id, mode, status) values (406, 'UPI', 'Pending');
+insert into payment (payment_id, mode, status) values (407, 'UPI', 'Successful');
+insert into payment (payment_id, mode, status) values (408, 'UPI', 'Pending');
+insert into payment (payment_id, mode, status) values (409, 'COD', 'Successful');
+insert into payment (payment_id, mode, status) values (410, 'Wallet', 'Failed');
+insert into Orders (order_id, status, date, customer_id, payment_id) values (301, 'Delivered', '04-01-2023', 121, 401);
+insert into Orders (order_id, status, date, customer_id, payment_id) values (302, 'Ordered', '10-02-2023', 108, 406);
+insert into Orders (order_id, status, date, customer_id, payment_id) values (303, 'Ordered', '19-03-2023', 104, 402);
+insert into Orders (order_id, status, date, customer_id, payment_id) values (304, 'Delivered', '12-01-2023', 120, 407);
+insert into Orders (order_id, status, date, customer_id, payment_id) values (305, 'Delivered', '31-01-2023', 110, 409);
+insert into Orders (order_id, status, date, customer_id, payment_id) values (306, 'Cancelled', '01-01-2023', 124, 410);
+insert into Orders (order_id, status, date, customer_id, payment_id) values (307, 'Delivered', '06-03-2023', 110, 408);
+insert into Orders (order_id, status, date, customer_id, payment_id) values (308, 'Shipment', '15-03-2023', 123, 404);
+insert into Orders (order_id, status, date, customer_id, payment_id) values (309, 'Ordered', '21-02-2023', 124, 405);
+insert into Orders (order_id, status, date, customer_id, payment_id) values (310, 'Shipment', '12-03-2023', 112, 403);
 insert into address (apartment, street, city, state, pincode, customer_id) values (82, 'Stephen', 'Gaithersburg', 'Maryland', '20883', 109);
 insert into address (apartment, street, city, state, pincode, customer_id) values (30, 'Barnett', 'Omaha', 'Nebraska', '68179', 119);
 insert into address (apartment, street, city, state, pincode, customer_id) values (66, 'Porter', 'Austin', 'Texas', '78715', 105);
@@ -83,68 +93,94 @@ insert into address (apartment, street, city, state, pincode, customer_id) value
 insert into address (apartment, street, city, state, pincode, customer_id) values (19, 'Raven', 'Omaha', 'Nebraska', '68124', 115);
 insert into address (apartment, street, city, state, pincode, customer_id) values (78, 'Atwood', 'Houston', 'Texas', '77095', 105);
 insert into address (apartment, street, city, state, pincode, customer_id) values (45, 'Roth', 'Jackson', 'Mississippi', '39296', 123);
-insert into payment (payment_id, mode, order_id, status, customer_id) values (401, 'Wallet', 301, 'Failed', 110);
-insert into payment (payment_id, mode, order_id, status, customer_id) values (402, 'Card', 302, 'Accepted', 104);
-insert into payment (payment_id, mode, order_id, status, customer_id) values (403, 'Card', 303, 'Accepted', 114);
-insert into payment (payment_id, mode, order_id, status, customer_id) values (404, 'UPI', 304, 'Pending', 110);
-insert into payment (payment_id, mode, order_id, status, customer_id) values (405, 'Wallet', 305, 'Accepted', 107);
-insert into payment (payment_id, mode, order_id, status, customer_id) values (406, 'UPI', 306, 'Accepted', 116);
-insert into payment (payment_id, mode, order_id, status, customer_id) values (407, 'UPI', 307, 'Accepted', 107);
-insert into payment (payment_id, mode, order_id, status, customer_id) values (408, 'COD', 308, 'Accepted', 104);
-insert into payment (payment_id, mode, order_id, status, customer_id) values (409, 'COD', 309, 'Pending', 122);
-insert into payment (payment_id, mode, order_id, status, customer_id) values (410, 'COD', 310, 'Accepted', 102);
-insert into seller (seller_id, sname, contact) values (501, 'Padraic', '4869419743');
-insert into seller (seller_id, sname, contact) values (502, 'Fonsie', '1313871017');
-insert into seller (seller_id, sname, contact) values (503, 'Joanne', '3557747088');
-insert into seller (seller_id, sname, contact) values (504, 'Connie', '2862058724');
-insert into seller (seller_id, sname, contact) values (505, 'Garrott', '2392229497');
-insert into seller (seller_id, sname, contact) values (506, 'Annaliese', '1538408041');
-insert into seller (seller_id, sname, contact) values (507, 'Thaddus', '5587487280');
-insert into seller (seller_id, sname, contact) values (508, 'Stormi', '8966025352');
-insert into seller (seller_id, sname, contact) values (509, 'Tailor', '4831349930');
-insert into seller (seller_id, sname, contact) values (510, 'Marita', '8953396485');
-insert into seller (seller_id, sname, contact) values (511, 'Meggi', '7381083012');
-insert into seller (seller_id, sname, contact) values (512, 'Rory', '9448841441');
-insert into seller (seller_id, sname, contact) values (513, 'Cristian', '4656114049');
-insert into seller (seller_id, sname, contact) values (514, 'Micaela', '9947660260');
-insert into seller (seller_id, sname, contact) values (515, 'Allix', '1302244777');
-insert into seller (seller_id, sname, contact) values (516, 'Brod', '2026826916');
-insert into seller (seller_id, sname, contact) values (517, 'Fionna', '8823138943');
-insert into seller (seller_id, sname, contact) values (518, 'Tedra', '7255344059');
-insert into seller (seller_id, sname, contact) values (519, 'Art', '5923215601');
-insert into seller (seller_id, sname, contact) values (520, 'Daffy', '8037305246');
-insert into seller (seller_id, sname, contact) values (521, 'Katie', '7841105483');
-insert into seller (seller_id, sname, contact) values (522, 'Patrizia', '1156916231');
-insert into seller (seller_id, sname, contact) values (523, 'Keenan', '7841117567');
-insert into seller (seller_id, sname, contact) values (524, 'Haze', '1448175995');
-insert into seller (seller_id, sname, contact) values (525, 'Lyda', '6869030449');
-insert into sells (seller_id, product_id, price, stock) values (518, 210, 127.77, 19);
-insert into sells (seller_id, product_id, price, stock) values (518, 214, 461.3, 8);
-insert into sells (seller_id, product_id, price, stock) values (521, 202, 220.41, 19);
-insert into sells (seller_id, product_id, price, stock) values (523, 217, 393.68, 7);
-insert into sells (seller_id, product_id, price, stock) values (513, 205, 348.92, 19);
-insert into sells (seller_id, product_id, price, stock) values (507, 224, 405.27, 16);
-insert into sells (seller_id, product_id, price, stock) values (503, 212, 182.45, 20);
-insert into sells (seller_id, product_id, price, stock) values (515, 216, 487.02, 19);
-insert into sells (seller_id, product_id, price, stock) values (505, 225, 29.66, 9);
-insert into sells (seller_id, product_id, price, stock) values (507, 204, 448.09, 5);
-insert into sells (seller_id, product_id, price, stock) values (523, 215, 77.59, 11);
-insert into sells (seller_id, product_id, price, stock) values (524, 206, 98.09, 17);
-insert into sells (seller_id, product_id, price, stock) values (510, 220, 451.6, 9);
-insert into sells (seller_id, product_id, price, stock) values (525, 223, 119.97, 11);
-insert into sells (seller_id, product_id, price, stock) values (513, 214, 10.28, 10);
-insert into sells (seller_id, product_id, price, stock) values (513, 204, 122.08, 16);
-insert into sells (seller_id, product_id, price, stock) values (511, 209, 124.57, 12);
-insert into sells (seller_id, product_id, price, stock) values (524, 221, 456.17, 11);
-insert into sells (seller_id, product_id, price, stock) values (505, 203, 259.31, 18);
-insert into sells (seller_id, product_id, price, stock) values (518, 203, 213.73, 11);
-insert into sells (seller_id, product_id, price, stock) values (505, 209, 397.76, 7);
-insert into sells (seller_id, product_id, price, stock) values (514, 223, 91.52, 14);
-insert into sells (seller_id, product_id, price, stock) values (511, 204, 198.58, 10);
-insert into sells (seller_id, product_id, price, stock) values (523, 218, 148.57, 7);
-insert into sells (seller_id, product_id, price, stock) values (510, 209, 475.72, 9);
-insert into contains (seller_id, product_id, order_id, cost, counts) values (518, 210, 301, 486.65, 5);
-insert into contains (seller_id, product_id, order_id, cost, counts) values (518, 214, 302, 198.38, 7);
-insert into contains (seller_id, product_id, order_id, cost, counts) values (521, 202, 303, 143.2, 11);
-insert into contains (seller_id, product_id, order_id, cost, counts) values (523, 217, 304, 18.61, 3);
-insert into contains (seller_id, product_id, order_id, cost, counts) values (513, 205, 305, 201.46, 14);
+insert into seller (seller_id, sname, email, contact, passkey) values (501, 'Randie', 'rbilyard0@fc2.com', '8786600772', 'Randie501');
+insert into seller (seller_id, sname, email, contact, passkey) values (502, 'Laureen', 'lganniclifft1@wired.com', '3993727827', 'Laureen502');
+insert into seller (seller_id, sname, email, contact, passkey) values (503, 'Roshelle', 'rbentall2@marriott.com', '5713726515', 'Roshelle503');
+insert into seller (seller_id, sname, email, contact, passkey) values (504, 'Neda', 'nocuolahan3@symantec.com', '5625404281', 'Neda504');
+insert into seller (seller_id, sname, email, contact, passkey) values (505, 'Farand', 'fstarkie4@skype.com', '5652634469', 'Farand505');
+insert into seller (seller_id, sname, email, contact, passkey) values (506, 'Anastasie', 'adeane5@networksolutions.com', '5113735194', 'Anastasie506');
+insert into seller (seller_id, sname, email, contact, passkey) values (507, 'Egor', 'ecarbonell6@ox.ac.uk', '6004409353', 'Egor507');
+insert into seller (seller_id, sname, email, contact, passkey) values (508, 'Loutitia', 'loughton7@newyorker.com', '6449805754', 'Loutitia508');
+insert into seller (seller_id, sname, email, contact, passkey) values (509, 'Hartley', 'hgatrell8@odnoklassniki.ru', '1567195079', 'Hartley509');
+insert into seller (seller_id, sname, email, contact, passkey) values (510, 'Auroora', 'anolleau9@usa.gov', '4945185667', 'Auroora510');
+insert into seller (seller_id, sname, email, contact, passkey) values (511, 'Corinne', 'cpierrepointa@e-recht24.de', '8424042642', 'Corinne511');
+insert into seller (seller_id, sname, email, contact, passkey) values (512, 'Robinia', 'rbelfeltb@smugmug.com', '7857638113', 'Robinia512');
+insert into seller (seller_id, sname, email, contact, passkey) values (513, 'Kally', 'kphettiplacec@xinhuanet.com', '7911886517', 'Kally513');
+insert into seller (seller_id, sname, email, contact, passkey) values (514, 'Bob', 'bhaythd@livejournal.com', '9979450247', 'Bob514');
+insert into seller (seller_id, sname, email, contact, passkey) values (515, 'Anthiathia', 'amoppette@mtv.com', '2395543096', 'Anthiathia515');
+insert into seller (seller_id, sname, email, contact, passkey) values (516, 'Justis', 'jinglestonf@quantcast.com', '5856478102', 'Justis516');
+insert into seller (seller_id, sname, email, contact, passkey) values (517, 'Bellina', 'bduffg@fc2.com', '3241629652', 'Bellina517');
+insert into seller (seller_id, sname, email, contact, passkey) values (518, 'Annissa', 'acrowcombeh@symantec.com', '9567674356', 'Annissa518');
+insert into seller (seller_id, sname, email, contact, passkey) values (519, 'Arin', 'apreenei@businessinsider.com', '2257701730', 'Arin519');
+insert into seller (seller_id, sname, email, contact, passkey) values (520, 'Delmar', 'dkittimanj@live.com', '5847525959', 'Delmar520');
+insert into seller (seller_id, sname, email, contact, passkey) values (521, 'Con', 'cschubuserk@sciencedirect.com', '9222261999', 'Con521');
+insert into seller (seller_id, sname, email, contact, passkey) values (522, 'Jeffrey', 'jgotcliffel@japanpost.jp', '6787684733', 'Jeffrey522');
+insert into seller (seller_id, sname, email, contact, passkey) values (523, 'Heriberto', 'hwerndleym@yolasite.com', '9091335606', 'Heriberto523');
+insert into seller (seller_id, sname, email, contact, passkey) values (524, 'Loralee', 'lmoarn@mapy.cz', '8362083580', 'Loralee524');
+insert into seller (seller_id, sname, email, contact, passkey) values (525, 'Moyra', 'mhackino@latimes.com', '1387771372', 'Moyra525');
+insert into sells (seller_id, product_id, stock, price) values (518, 205, 21, 387);
+insert into sells (seller_id, product_id, stock, price) values (523, 206, 19, 606);
+insert into sells (seller_id, product_id, stock, price) values (508, 204, 18, 87);
+insert into sells (seller_id, product_id, stock, price) values (503, 216, 8, 710);
+insert into sells (seller_id, product_id, stock, price) values (516, 216, 24, 887);
+insert into sells (seller_id, product_id, stock, price) values (510, 216, 20, 598);
+insert into sells (seller_id, product_id, stock, price) values (522, 210, 23, 439);
+insert into sells (seller_id, product_id, stock, price) values (514, 206, 10, 535);
+insert into sells (seller_id, product_id, stock, price) values (501, 206, 6, 887);
+insert into sells (seller_id, product_id, stock, price) values (511, 212, 25, 873);
+insert into sells (seller_id, product_id, stock, price) values (508, 225, 7, 370);
+insert into sells (seller_id, product_id, stock, price) values (504, 220, 11, 548);
+insert into sells (seller_id, product_id, stock, price) values (515, 215, 15, 901);
+insert into sells (seller_id, product_id, stock, price) values (521, 205, 11, 80);
+insert into sells (seller_id, product_id, stock, price) values (517, 209, 5, 696);
+insert into sells (seller_id, product_id, stock, price) values (512, 215, 17, 417);
+insert into sells (seller_id, product_id, stock, price) values (513, 212, 16, 939);
+insert into sells (seller_id, product_id, stock, price) values (525, 220, 13, 915);
+insert into sells (seller_id, product_id, stock, price) values (511, 214, 18, 838);
+insert into sells (seller_id, product_id, stock, price) values (508, 216, 24, 913);
+insert into sells (seller_id, product_id, stock, price) values (502, 220, 17, 176);
+insert into sells (seller_id, product_id, stock, price) values (506, 223, 6, 795);
+insert into sells (seller_id, product_id, stock, price) values (520, 211, 17, 20);
+insert into sells (seller_id, product_id, stock, price) values (525, 213, 18, 856);
+insert into sells (seller_id, product_id, stock, price) values (505, 214, 5, 45);
+insert into contains (seller_id, product_id, counts, cost, order_id) values (520, 211, 7, 20, 301);
+insert into contains (seller_id, product_id, counts, cost, order_id) values (508, 225, 3, 370, 302);
+insert into contains (seller_id, product_id, counts, cost, order_id) values (516, 216, 4, 887, 303);
+insert into contains (seller_id, product_id, counts, cost, order_id) values (508, 204, 8, 87, 304);
+insert into contains (seller_id, product_id, counts, cost, order_id) values (521, 205, 6, 80, 305);
+ umbrella       
+ charger        
+ sneakers       
+ popcorn        
+ perfume        
+ slippers       
+ wallet         
+ lamp           
+ microphone     
+ candle         
+ conditioner    
+ sailboat       
+ dumbbell       
+ keyboard       
+ beardtrimmer   
+ sweater        
+ pillow         
+ lipstick       
+ speaker        
+ fan            
+ pen            
+ blanket        
+ football       
+ volleyball     
+ badminton  
+
+
+address
+customer
+product
+orders
+payment
+seller
+sells
+cart
+contains

@@ -1,0 +1,189 @@
+\d cart
+                  Table "public.cart"
+   Column    |  Type   | Collation | Nullable | Default 
+-------------+---------+-----------+----------+---------
+ customer_id | integer |           | not null | 
+ product_id  | integer |           | not null | 
+ seller_id   | integer |           | not null | 
+ counts      | integer |           |          | 1
+ price       | integer |           | not null | 
+Indexes:
+    "cart_pkey" PRIMARY KEY, btree (customer_id, product_id, seller_id)
+Foreign-key constraints:
+    "cart_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+    "cart_seller_id_product_id_fkey" FOREIGN KEY (seller_id, product_id) REFERENCES sells(seller_id, product_id)
+Policies (row security enabled): (none)
+Triggers:
+    check_stock_trigger BEFORE INSERT ON cart FOR EACH ROW EXECUTE FUNCTION check_stock()
+
+
+
+\d sells
+                 Table "public.sells"
+   Column   |  Type   | Collation | Nullable | Default 
+------------+---------+-----------+----------+---------
+ stock      | integer |           |          | 0
+ price      | numeric |           |          | 
+ seller_id  | integer |           | not null | 
+ product_id | integer |           | not null | 
+Indexes:
+    "sells_pkey" PRIMARY KEY, btree (seller_id, product_id)
+Foreign-key constraints:
+    "sells_product_id_fkey" FOREIGN KEY (product_id) REFERENCES product(product_id)
+    "sells_seller_id_fkey" FOREIGN KEY (seller_id) REFERENCES seller(seller_id)
+Referenced by:
+    TABLE "cart" CONSTRAINT "cart_seller_id_product_id_fkey" FOREIGN KEY (seller_id, product_id) REFERENCES sells(seller_id, product_id)
+    TABLE "contains" CONSTRAINT "contains_seller_id_product_id_fkey" FOREIGN KEY (seller_id, product_id) REFERENCES sells(seller_id, product_id)
+Policies (row security enabled): (none)
+Triggers:
+    update_product_total_stock_trigger AFTER INSERT OR UPDATE ON sells FOR EACH ROW EXECUTE FUNCTION get_stock()
+
+
+
+\d seller
+                   Table "public.seller"
+  Column   |     Type      | Collation | Nullable | Default 
+-----------+---------------+-----------+----------+---------
+ seller_id | integer       |           | not null | 
+ sname     | character(15) |           | not null | 
+ email     | character(30) |           | not null | 
+ contact   | character(15) |           | not null | 
+ passkey   | character(20) |           | not null | 
+Indexes:
+    "seller_pkey" PRIMARY KEY, btree (seller_id)
+Referenced by:
+    TABLE "sells" CONSTRAINT "sells_seller_id_fkey" FOREIGN KEY (seller_id) REFERENCES seller(seller_id)
+Policies:
+    POLICY "provide" FOR SELECT
+      TO provider
+      USING ((seller_id = 501))
+
+
+
+\d contains
+                Table "public.contains"
+   Column   |  Type   | Collation | Nullable | Default 
+------------+---------+-----------+----------+---------
+ counts     | integer |           | not null | 
+ cost       | integer |           |          | 
+ seller_id  | integer |           | not null | 
+ product_id | integer |           | not null | 
+ order_id   | integer |           | not null | 
+Indexes:
+    "contains_pkey" PRIMARY KEY, btree (product_id, order_id, seller_id)
+Foreign-key constraints:
+    "contains_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(order_id)
+    "contains_seller_id_product_id_fkey" FOREIGN KEY (seller_id, product_id) REFERENCES sells(seller_id, product_id)
+Policies:
+    POLICY "order_contents" FOR SELECT
+      TO buyer
+      USING ((order_id IN ( SELECT orders.order_id
+   FROM orders
+  WHERE (orders.customer_id = 121))))
+
+
+
+\d orders
+                         Table "public.orders"
+   Column    |     Type      | Collation | Nullable |      Default      
+-------------+---------------+-----------+----------+-------------------
+ order_id    | integer       |           | not null | 
+ date        | character(10) |           | not null | 
+ status      | character(10) |           |          | 'Ordered'::bpchar
+ amount      | integer       |           |          | '-1'::integer
+ customer_id | integer       |           |          | 
+ payment_id  | integer       |           |          | 
+Indexes:
+    "orders_pkey" PRIMARY KEY, btree (order_id)
+Foreign-key constraints:
+    "orders_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+    "orders_payment_id_fkey" FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
+Referenced by:
+    TABLE "contains" CONSTRAINT "contains_order_id_fkey" FOREIGN KEY (order_id) REFERENCES orders(order_id)
+Policies:
+    POLICY "list_order" FOR SELECT
+      TO buyer
+      USING ((customer_id = 121))
+Triggers:
+    cancel_order AFTER UPDATE ON orders FOR EACH ROW EXECUTE FUNCTION procedure_cancelled_order()
+
+
+
+\d product
+                      Table "public.product"
+   Column   |     Type      | Collation | Nullable |    Default    
+------------+---------------+-----------+----------+---------------
+ product_id | integer       |           | not null | 
+ pname      | character(15) |           | not null | 
+ total      | integer       |           |          | '-1'::integer
+Indexes:
+    "product_pkey" PRIMARY KEY, btree (product_id)
+Referenced by:
+    TABLE "sells" CONSTRAINT "sells_product_id_fkey" FOREIGN KEY (product_id) REFERENCES product(product_id)
+Policies (row security enabled): (none)
+
+
+
+\d address
+                    Table "public.address"
+   Column    |     Type      | Collation | Nullable | Default 
+-------------+---------------+-----------+----------+---------
+ apartment   | character(5)  |           | not null | 
+ street      | character(15) |           | not null | 
+ city        | character(20) |           | not null | 
+ state       | character(20) |           | not null | 
+ pincode     | integer       |           | not null | 
+ customer_id | integer       |           | not null | 
+Indexes:
+    "address_pkey" PRIMARY KEY, btree (customer_id, pincode, apartment, street)
+Foreign-key constraints:
+    "address_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+Policies:
+    POLICY "add" FOR SELECT
+      TO buyer
+      USING ((customer_id = 101))
+
+
+
+
+\d customer
+                   Table "public.customer"
+   Column    |     Type      | Collation | Nullable | Default 
+-------------+---------------+-----------+----------+---------
+ customer_id | integer       |           | not null | 
+ cname       | character(15) |           | not null | 
+ email       | character(30) |           | not null | 
+ contact     | character(15) |           | not null | 
+ passkey     | character(20) |           | not null | 
+ dob         | character(10) |           |          | 
+Indexes:
+    "customer_pkey" PRIMARY KEY, btree (customer_id)
+Referenced by:
+    TABLE "address" CONSTRAINT "address_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+    TABLE "cart" CONSTRAINT "cart_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+    TABLE "orders" CONSTRAINT "orders_customer_id_fkey" FOREIGN KEY (customer_id) REFERENCES customer(customer_id)
+Policies:
+    POLICY "buy" FOR SELECT
+      TO buyer
+      USING ((customer_id = 101))
+
+
+
+\d payment
+                        Table "public.payment"
+   Column   |     Type      | Collation | Nullable |      Default      
+------------+---------------+-----------+----------+-------------------
+ payment_id | integer       |           | not null | 
+ mode       | character(20) |           | not null | 
+ status     | character(10) |           |          | 'Pending'::bpchar
+Indexes:
+    "payment_pkey" PRIMARY KEY, btree (payment_id)
+Referenced by:
+    TABLE "orders" CONSTRAINT "orders_payment_id_fkey" FOREIGN KEY (payment_id) REFERENCES payment(payment_id)
+Policies:
+    POLICY "payments_list" FOR SELECT
+      TO buyer
+      USING ((payment_id IN ( SELECT orders.payment_id
+   FROM orders
+  WHERE (orders.customer_id = 121))))
+

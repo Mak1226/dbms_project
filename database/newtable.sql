@@ -1,25 +1,33 @@
 CREATE TABLE Customer(
 customer_id int PRIMARY KEY,
-name char(30) NOT NULL,
-email char(50) NOT NULL,
-contact char(15) NOT NULL,
-passkey text,
-DOB char(12)
+cname char(15) NOT NULL,
+email char(30) NOT NULL,
+contact char(10) NOT NULL,
+passkey char(20) NOT NULL,
+DOB char(10)
 );
 CREATE TABLE Product(
 product_id int NOT NULL,
-pname char(50) NOT NULL,
+pname char(15) NOT NULL,
 total int DEFAULT -1,
 PRIMARY KEY(product_id)
 );
+CREATE TABLE Payment(
+payment_id int NOT NULL,
+mode char (15) NOT NULL,
+status char(10) DEFAULT 'Pending',
+PRIMARY KEY(payment_id)
+);
 CREATE TABLE Orders(
 order_id int NOT NULL,
-date char(50) NOT NULL,
-status char(20) DEFAULT 'Ordered',
+date char(10) NOT NULL,
+status char(10) DEFAULT 'Ordered',
 amount int DEFAULT -1,
 customer_id int,
+payment_id int,
 PRIMARY KEY(order_id),
-FOREIGN KEY (customer_id) REFERENCES Customer (customer_id)
+FOREIGN KEY (customer_id) REFERENCES Customer (customer_id),
+FOREIGN KEY (payment_id) REFERENCES Payment (payment_id)
 );
 CREATE TABLE Address(
 apartment char(5) NOT NULL,
@@ -31,20 +39,12 @@ customer_id int,
 PRIMARY KEY(customer_id, pincode, apartment, street),
 FOREIGN KEY (customer_id) REFERENCES Customer (customer_id)
 );
-CREATE TABLE Payment(
-payment_id int NOT NULL,
-mode char (20) NOT NULL,
-status char(10) DEFAULT 'Pending',
-customer_id int,
-order_id int,
-PRIMARY KEY(payment_id),
-FOREIGN KEY (customer_id) REFERENCES Customer (customer_id),
-FOREIGN KEY (order_id) REFERENCES Orders (order_id)
-);
 CREATE TABLE Seller(
 seller_id int NOT NULL,
-sname char (25) NOT NULL,
-Contact char(10) NOT NULL,
+sname char (15) NOT NULL,
+email char(30) NOT NULL,
+contact char(10) NOT NULL,
+passkey char(20) NOT NULL,
 PRIMARY KEY(seller_id)
 );
 CREATE TABLE sells (
